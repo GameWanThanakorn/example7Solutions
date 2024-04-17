@@ -21,29 +21,56 @@ class _BodyHomeViewState extends State<BodyHomeView> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ListView.builder(
-        physics: const ClampingScrollPhysics(),
+      child: ListView.separated(
         itemCount: _fibList.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'index: $index, Number: ${_fibList[index]}',
-                  style: const TextStyle(fontSize: 16),
-                ),
-                Icon(
-                  _logic.typeIcon(_fibList[index]),
-                  color: Colors.black,
-                  size: 20,
-                )
-              ],
+        controller: _logic.scrollController,
+        itemBuilder: (BuildContext context, int index) {
+          final value = _fibList[index];
+          if (_logic.containsIndex(index)) {
+            return const SizedBox.shrink();
+          }
+          return Container(
+            color: _logic.catchToggledIndexes['index'] == index ? Colors.red : Colors.white,
+            child: _BuildIndexItemWidget(
+              onTap: () => _onSelected(index),
+              index: index,
+              value: value,
+              icon: _logic.typeIcon(value),
             ),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          if (_logic.containsIndex(index)) {
+            return const SizedBox.shrink();
+          }
+          return const Divider(
+            height: 0,
+            color: Colors.grey,
           );
         },
       ),
     );
+  }
+
+  _onSelected(int index) {
+    final value = _fibList[index];
+    final calculateFib = value % 3;
+    setState(() {
+      _logic.selected({'index': index, 'value': value});
+    });
+    _buildBottomSheet(calculateFib, value, index);
+  }
+
+  _buildBottomSheet(int calculateFib, int value, int index) {
+    return BottomSheetWidget.showBottomSheet(_logic.toggledIndexes, calculateFib, value, (value) {
+      final map = _logic.firstWhereValue(value);
+      setState(() {
+        _logic.selected(map);
+      });
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _logic.scrollToBottom(_logic.catchToggledIndexes);
+        Navigator.pop(context);
+      });
+    });
   }
 }
