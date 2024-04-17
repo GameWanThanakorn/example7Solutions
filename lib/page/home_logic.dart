@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/extension/icons_data.dart';
 
@@ -25,7 +23,6 @@ class HomeLogic {
   }
 
   scrollToBottom(Map<String, dynamic> map) {
-    log('${sequence.indexOf(map['value'])}');
     var itemHight = 41;
     scrollController.animateTo(
       sequence.indexOf(map['value']).toDouble() * itemHight,
