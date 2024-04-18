@@ -23,7 +23,7 @@ class HomeLogic {
   }
 
   scrollToBottom(Map<String, dynamic> map) {
-    var itemHight = 31;
+    var itemHight = 45;
     scrollController.animateTo(
       sequence.indexOf(map['value']).toDouble() * itemHight,
       duration: const Duration(milliseconds: 300),
