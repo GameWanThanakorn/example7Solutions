@@ -10,25 +10,24 @@ void main() {
   group('HomeLogic Tests', () {
     test('Test Fibonacci Sequence Generation', () {
       final sequence = homeLogic.fibonacciSequence();
-      expect(sequence.length, 41);
-      expect(sequence[0], 0);
-      expect(sequence[3], 2);
-      expect(sequence[40], 102334155);
+      expect(sequence.length, equals(41));
+      expect(sequence[0], equals(0));
+      expect(sequence[3], equals(2));
+      expect(sequence[40], equals(102334155));
     });
 
     test('Test Toggled Indexes', () {
       final map = {'index': 4, 'value': 3};
-      homeLogic.add(map);
+      homeLogic.toggledIndexes.add(map);
       expect(homeLogic.containsIndex(4), true);
       expect(homeLogic.firstWhereValue(3), map);
-      homeLogic.remove(map);
+      homeLogic.toggledIndexes.remove(map);
       expect(homeLogic.containsIndex(4), false);
     });
 
     test('Test selected method when map is already toggled', () {
-      final homeLogic = HomeLogic();
       final map = {'index': 2, 'value': 3};
-      homeLogic.add(map);
+      homeLogic.toggledIndexes.add(map);
 
       homeLogic.selected(map);
 
@@ -37,7 +36,6 @@ void main() {
     });
 
     test('Test selected method when map is not toggled', () {
-      final homeLogic = HomeLogic();
       final map = {'index': 2, 'value': 3};
 
       homeLogic.selected(map);
