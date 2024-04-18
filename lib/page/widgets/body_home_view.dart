@@ -22,6 +22,7 @@ class _BodyHomeViewState extends State<BodyHomeView> {
   Widget build(BuildContext context) {
     return Center(
       child: ListView.separated(
+        key: const Key('listViewScrollable'),
         itemCount: _fibList.length,
         controller: _logic.scrollController,
         itemBuilder: (BuildContext context, int index) {
@@ -30,8 +31,9 @@ class _BodyHomeViewState extends State<BodyHomeView> {
             return const SizedBox.shrink();
           }
           return Container(
+            key: Key('buildIndexItemWidget $index'),
             color: _logic.catchToggledIndexes['index'] == index ? Colors.red : Colors.white,
-            child: _BuildIndexItemWidget(
+            child: BuildIndexItemWidget(
               onTap: () => _onSelected(index),
               index: index,
               value: value,
@@ -62,7 +64,7 @@ class _BodyHomeViewState extends State<BodyHomeView> {
   }
 
   _buildBottomSheet(int calculateFib, int value, int index) {
-    return BottomSheetWidget.showBottomSheet(_logic.toggledIndexes, calculateFib, value, (value) {
+    return BottomSheetWidget.showBottomSheet(context, _logic.toggledIndexes, calculateFib, value, (value) {
       final map = _logic.firstWhereValue(value);
       setState(() {
         _logic.selected(map);

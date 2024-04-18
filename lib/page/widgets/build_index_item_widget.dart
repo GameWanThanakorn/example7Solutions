@@ -1,10 +1,11 @@
 part of '../home_view.dart';
 
-class _BuildIndexItemWidget extends StatelessWidget {
+class BuildIndexItemWidget extends StatelessWidget {
   final void Function()? onTap;
   final int index, value;
   final IconData icon;
-  const _BuildIndexItemWidget({
+  const BuildIndexItemWidget({
+    super.key,
     required this.onTap,
     required this.index,
     required this.value,

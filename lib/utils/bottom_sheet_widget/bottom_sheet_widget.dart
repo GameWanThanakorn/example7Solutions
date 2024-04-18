@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/page/home_logic.dart';
-import 'package:flutter_application_1/utils/app_constants.dart';
 import 'package:flutter_application_1/utils/bottom_sheet_widget/bottom_sheet_logic.dart';
 
 class BottomSheetWidget {
-  static void showBottomSheet(List<Map<String, dynamic>> fibList, int calculateFib, int value, void Function(int)? onSelected) {
-    BuildContext context = AppConstants.parentNavigatorKey.currentState!.context;
+  static void showBottomSheet(
+      BuildContext context, List<Map<String, dynamic>> fibList, int calculateFib, int value, void Function(int)? onSelected) {
     HomeLogic logic = HomeLogic();
     BottomSheetLogic bottomSheetLogic = BottomSheetLogic();
     List<Map<String, dynamic>> filterArray = bottomSheetLogic.filterFibonacciList(fibList: fibList, calculateFib: calculateFib);
@@ -24,8 +23,10 @@ class BottomSheetWidget {
             itemBuilder: (context, index) {
               final e = filterArray[index];
               return InkWell(
+                key: Key('bottomSheet ${e['value']}'),
                 onTap: () => onSelected!(e['value']),
                 child: Container(
+                  key: Key('container ${e['value']}'),
                   color: whereValue['index'] == e['index'] ? Colors.green : Colors.white,
                   child: ListTile(
                     contentPadding: const EdgeInsets.all(8),
