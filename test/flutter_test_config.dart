@@ -12,7 +12,6 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
     },
     config: GoldenToolkitConfiguration(
       defaultDevices: const [
-        // Device(size: Size(390, 667), name: 'SE'),
         Device(size: Size(414, 736), name: '8 plus'),
         Device(size: Size(393, 852), name: '15'),
         Device(size: Size(393, 852), name: '15 Pro'),
