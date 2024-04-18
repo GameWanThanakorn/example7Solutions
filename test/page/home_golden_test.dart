@@ -22,6 +22,7 @@ void main() {
         ..addScenario(
           name: 'page 2',
           widget: const MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: HomeView(),
           ),
           onCreate: (key) async {
@@ -37,6 +38,7 @@ void main() {
         ..addScenario(
           name: 'page 3',
           widget: const MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: HomeView(),
           ),
           onCreate: (key) async {
@@ -96,6 +98,7 @@ void main() {
         ..addScenario(
           name: 'page 2',
           widget: const MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: HomeView(),
           ),
           onCreate: (key) async {
@@ -111,6 +114,7 @@ void main() {
         ..addScenario(
           name: 'page 3',
           widget: const MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: HomeView(),
           ),
           onCreate: (key) async {
@@ -202,6 +206,7 @@ void main() {
         ..addScenario(
           name: 'page 3',
           widget: const MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: HomeView(),
           ),
           onCreate: (key) async {
@@ -226,6 +231,7 @@ void main() {
         ..addScenario(
           name: 'page 4',
           widget: const MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: HomeView(),
           ),
           onCreate: (key) async {
@@ -251,6 +257,7 @@ void main() {
         ..addScenario(
           name: 'page 5',
           widget: const MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: HomeView(),
           ),
           onCreate: (key) async {
@@ -345,6 +352,7 @@ void main() {
         ..addScenario(
           name: 'page 3',
           widget: const MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: HomeView(),
           ),
           onCreate: (key) async {
@@ -369,6 +377,7 @@ void main() {
         ..addScenario(
           name: 'page 4',
           widget: const MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: HomeView(),
           ),
           onCreate: (key) async {
@@ -394,6 +403,7 @@ void main() {
         ..addScenario(
           name: 'page 5',
           widget: const MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: HomeView(),
           ),
           onCreate: (key) async {
