@@ -24,6 +24,7 @@ class _BodyHomeViewState extends State<BodyHomeView> {
       child: ListView.separated(
         key: const Key('listViewScrollable'),
         itemCount: _fibList.length,
+        physics: const ClampingScrollPhysics(),
         controller: _logic.scrollController,
         itemBuilder: (BuildContext context, int index) {
           final value = _fibList[index];
